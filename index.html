@@ -1,75 +1,37 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>今日のひとこと</title>
+    <title>601 Error</title>
     <style>
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+        }
+        .error-container {
             text-align: center;
-            margin: 50px;
         }
         h1 {
-            color: #333;
+            font-size: 72px;
+            margin: 0;
+            color: #343a40;
         }
-        .quote-box {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-        }
-        input, button {
-            margin: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        p {
+            font-size: 24px;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
-    <h1>今日のひとこと</h1>
-    <div class="quote-box" id="quoteDisplay">
-        入力された言葉をランダムに表示させます。作者：姉川
+    <div class="error-container">
+        <h1>601</h1>
+        <p>This error Does Not Exist</p>
     </div>
-
-    <div>
-        <input type="text" id="newQuote" placeholder="言葉を入力">
-        <button onclick="addQuote()">追加</button>
-    </div>
-
-    <script>
-        // LocalStorageから言葉リストを取得（存在しない場合は空配列）
-        let quotes = JSON.parse(localStorage.getItem('quotes')) || [];
-
-        // ページ読み込み時にランダムな言葉を表示
-        window.onload = function () {
-            if (quotes.length > 0) {
-                displayRandomQuote();
-            }
-        };
-
-        // ランダムな言葉を表示する関数
-        function displayRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            document.getElementById('quoteDisplay').innerText = quotes[randomIndex];
-        }
-
-        // 新しい言葉を追加する関数
-        function addQuote() {
-            const newQuote = document.getElementById('newQuote').value.trim();
-            if (newQuote && !quotes.includes(newQuote)) {
-                quotes.push(newQuote);
-                localStorage.setItem('quotes', JSON.stringify(quotes));
-                alert('新しい言葉が追加されました！');
-                document.getElementById('newQuote').value = ''; // 入力欄をクリア
-            } else {
-                alert('既に追加されているか、無効な入力です。');
-            }
-        }
-    </script>
 </body>
 </html>
